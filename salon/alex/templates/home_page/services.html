@@ -1,0 +1,352 @@
+{% extends "panel/base/base_home.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Section Héros avec Effet Parallaxe -->
+<section class="pt-24 relative h-[60vh] bg-fixed bg-center bg-cover" style="background-image: url('{% static 'images/1.JPEG' %}')">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="container mx-auto px-4 relative z-10 h-full flex items-center">
+        <div class="text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in" data-i18n="about.title">
+                À Propos d'Andra la Kamerounaise
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl animate-slide-up" data-i18n="about.subtitle">
+                Créer de la beauté à travers la coiffure traditionnelle africaine
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Section Notre Histoire -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 transform hover:scale-105 transition-transform duration-500">
+                <img src="{% static 'images/22.JPEG' %}" alt="Fondatrice" class="rounded-lg shadow-2xl">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white" data-i18n="story.title">
+                    Notre Histoire
+                </h2>
+                <div class="space-y-4 text-gray-600 dark:text-gray-300">
+                    <p class="animate-fade-in" data-i18n="story.p1">
+                        Fondée par passion pour les tresses africaines authentiques, Andra la Kamerounaise est devenue une pierre angulaire de la beauté et de la tradition à Yaoundé. Notre parcours a commencé avec une mission simple : fournir des services de tressage exceptionnels tout en célébrant le riche patrimoine de la culture capillaire africaine.
+                    </p>
+                    <p class="animate-fade-in" data-i18n="story.p2">
+                        Je suis une professionnelle spécialisée dans la réalisation de tresses africaines, mettant en valeur la beauté et l'identité unique qui sommeille en vous. Mon objectif est de sublimer votre coiffure avec des tresses authentiques et de qualité.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Services -->
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-i18n="services.title">
+            Nos Services
+        </h2>
+        
+        <!-- Grille des Services -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Carte de Service 1 -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                <div class="relative">
+                    <img src="{% static 'images/7.JPEG' %}" alt="Tresses en Boîte" class="w-full h-64 object-cover">
+                    <div class="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full">
+                        À partir de 5 000 FCFA
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Tresses en Boîte</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Tresses en boîte classiques de différentes tailles, parfaites pour toute occasion. Durée : 4-6 heures
+                    </p>
+                    <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Options de taille multiples
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Longueur personnalisée disponible
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Comprend des conseils de soins capillaires
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='{% url 'booking' %}';" class="w-full bg-purple-600 text-white py-3 rounded-md hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105" data-i18n="services.book">
+                        Réservez maintenant
+                    </button>
+                    
+                </div>
+            </div>
+
+            <!-- Carte de Service 2 -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                <div class="relative">
+                    <img src="{% static 'images/44.JPEG' %}" alt="Tresses Twist" class="w-full h-64 object-cover">
+                    <div class="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full">
+                        À partir de 5 000 FCFA
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Tresses Twist</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Magnifiques tresses twist pour un look naturel et élégant. Durée : 3-5 heures
+                    </p>
+                    <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Cheveux naturels ou synthétiques
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Divers styles disponibles
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Conseils d'entretien inclus
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='{% url 'booking' %}';" class="w-full bg-purple-600 text-white py-3 rounded-md hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105" data-i18n="services.book">
+                        Réservez maintenant
+                    </button>
+                    
+                </div>
+            </div>
+
+            <!-- Carte de Service 3 -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                <div class="relative">
+                    <img src="{% static 'images/8.JPEG' %}" alt="Tresses Collées" class="w-full h-64 object-cover">
+                    <div class="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full">
+                        À partir de 5 000 FCFA
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Tresses Collées</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Motifs de tresses collées classiques ou créatifs. Durée : 2-4 heures
+                    </p>
+                    <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Motifs personnalisés
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Avec ou sans extensions
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Traitement du cuir chevelu inclus
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='{% url 'booking' %}';" class="w-full bg-purple-600 text-white py-3 rounded-md hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105" data-i18n="services.book">
+                        Réservez maintenant
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bouton Voir tout notre catalogue -->
+        <div class="mt-12 text-center">
+            <a href="{% url 'about' %}" class="inline-block bg-purple-600 text-white font-bold py-3 px-6 rounded hover:bg-purple-700 transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                Voir tout notre catalogue
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section Pourquoi Nous Choisir -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-i18n="why.title">
+            Pourquoi Choisir Andra la K.
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Caractéristique 1 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.experience">Expérience</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.experienceText">
+                    Plus de 5 ans d'expérience professionnelle dans le tressage de cheveux africains
+                </p>
+            </div>
+
+            <!-- Caractéristique 2 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.quality">Qualité</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.qualityText">
+                    Produits capillaires premium et attention aux détails pour des résultats durables
+                </p>
+            </div>
+
+            <!-- Caractéristique 3 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.pricing">Tarifs Équitables</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.pricingText">
+                    Tarifs compétitifs avec une tarification transparente et sans frais cachés
+                </p>
+            </div>
+
+            <!-- Caractéristique 4 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.convenience">Commodité</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.convenienceText">
+                    Horaires flexibles et environnement confortable dans le salon
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Témoignages -->
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-i18n="testimonials.title">
+            Ce Que Disent Nos Clients
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Témoignage 1 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <img src="{% static 'images/avarta.png' %}" alt="Client" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800 dark:text-white">Sarah K.</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="testimonials.review1">
+                    "Service absolument incroyable ! L'attention aux détails et le soin apporté à mes cheveux étaient exceptionnels. Mes tresses en boîte ont duré des mois !"
+                </p>
+            </div>
+
+            <!-- Témoignage 2 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <img src="{% static 'images/avarta3.png' %}" alt="Client" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800 dark:text-white">Marlyse K.</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="testimonials.review2">
+                    "Service professionnel et attention incroyable aux détails. Mes tresses collées étaient exactement ce que je voulais !"                </p>
+            </div>
+
+            <!-- Témoignage 3 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <img src="{% static 'images/avarta3.png' %}" alt="Client" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800 dark:text-white">Sandra K.</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="testimonials.review3">
+                    "Meilleur salon de tresses à Yaoundé ! L'atmosphère est accueillante et les résultats sont toujours parfaits."                </p>
+            </div>
+        </div>
+    </div>
+</section>
+            <!-- Continue from here... -->
+
+
+            {% endblock %}
+
+
+
+
+                        

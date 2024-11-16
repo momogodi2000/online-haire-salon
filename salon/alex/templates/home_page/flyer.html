@@ -1,0 +1,358 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andra la Kamerounaise - Galerie</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <style>
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .filter-button.active {
+            background-color: #9333ea;
+            color: white;
+        }
+        
+        .modal-content {
+            animation: zoomIn 0.3s ease-out;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .category-tabs {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="dark:bg-gray-900 min-h-screen">
+    <!-- Language and Theme Toggles -->
+    <div class="fixed top-4 right-4 flex space-x-4 z-50">
+        <button id="language-toggle" class="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700">
+            <span data-lang="fr">EN</span>
+            <span data-lang="en">FR</span>
+        </button>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header -->
+        <div class="text-center mb-12" data-aos="fade-down">
+            <h1 class="text-4xl font-bold mb-4 text-purple-600 dark:text-purple-400">
+                <span data-lang="fr">Galerie Andra la Kamerounaise</span>
+                <span data-lang="en">Andra the Kameroonian Gallery</span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                <span data-lang="fr">Découvrez nos moments forts et promotions</span>
+                <span data-lang="en">Discover our highlights and promotions</span>
+            </p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs flex space-x-4 mb-8 pb-2 overflow-x-auto" data-aos="fade-right">
+            <button class="filter-button active whitespace-nowrap px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-purple-600 hover:text-white transition-all" data-category="all">
+                <span data-lang="fr">Tout</span>
+                <span data-lang="en">All</span>
+            </button>
+            <button class="filter-button whitespace-nowrap px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-purple-600 hover:text-white transition-all" data-category="promos">
+                <span data-lang="fr">Promotions</span>
+                <span data-lang="en">Promotions</span>
+            </button>
+            <button class="filter-button whitespace-nowrap px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-purple-600 hover:text-white transition-all" data-category="winners">
+                <span data-lang="fr">Gagnants Concours</span>
+                <span data-lang="en">Contest Winners</span>
+            </button>
+            <button class="filter-button whitespace-nowrap px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-purple-600 hover:text-white transition-all" data-category="events">
+                <span data-lang="fr">Événements</span>
+                <span data-lang="en">Events</span>
+            </button>
+            <button class="filter-button whitespace-nowrap px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-purple-600 hover:text-white transition-all" data-category="videos">
+                <span data-lang="fr">Vidéos</span>
+                <span data-lang="en">Videos</span>
+            </button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Promo Example -->
+            <div class="gallery-item" data-category="promos" data-aos="fade-up">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                    <img src="{% static 'images/noel.JPG' %}" alt="Promotion" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this.src, 'image')">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 dark:text-white">
+                            <span data-lang="fr">Promotion Spéciale Noël</span>
+                            <span data-lang="en">Christmas Special Promotion</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                            <span data-lang="fr">-30% sur toutes les coiffures jusqu'au 25 décembre</span>
+                            <span data-lang="en">30% off all hairstyles until December 25th</span>
+                        </p>
+                        <button class="text-purple-600 hover:text-purple-700 text-sm" onclick="downloadImage('{% static 'images/noel.JPG' %}', 'promotion-noel.jpg')">
+                            <span data-lang="fr">Télécharger</span>
+                            <span data-lang="en">Download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="promos" data-aos="fade-up">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                    <img src="{% static 'flyer/4.png' %}" alt="Promotion" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this.src, 'image')">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 dark:text-white">
+                            <span data-lang="fr">Promotion Spéciale Noël</span>
+                            <span data-lang="en">Christmas Special Promotion</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                            <span data-lang="fr">-30% sur toutes les coiffures jusqu'au 25 décembre</span>
+                            <span data-lang="en">30% off all hairstyles until December 25th</span>
+                        </p>
+                        <button class="text-purple-600 hover:text-purple-700 text-sm" onclick="downloadImage('{% static 'flyer/4.png' %}', 'promotion-noel.jpg')">
+                            <span data-lang="fr">Télécharger</span>
+                            <span data-lang="en">Download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="promos" data-aos="fade-up">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                    <img src="{% static 'flyer/5.png' %}" alt="Promotion" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this.src, 'image')">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 dark:text-white">
+                            <span data-lang="fr">Promotion Spéciale Noël</span>
+                            <span data-lang="en">Christmas Special Promotion</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                            <span data-lang="fr">-30% sur toutes les coiffures jusqu'au 25 décembre</span>
+                            <span data-lang="en">30% off all hairstyles until December 25th</span>
+                        </p>
+                        <button class="text-purple-600 hover:text-purple-700 text-sm" onclick="downloadImage('{% static 'flyer/5.png' %}', 'promotion-noel.jpg')">
+                            <span data-lang="fr">Télécharger</span>
+                            <span data-lang="en">Download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="promos" data-aos="fade-up">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                    <img src="{% static 'flyer/2.png' %}" alt="Promotion" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this.src, 'image')">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 dark:text-white">
+                            <span data-lang="fr">Promotion Spéciale Noël</span>
+                            <span data-lang="en">Christmas Special Promotion</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                            <span data-lang="fr">-30% sur toutes les coiffures jusqu'au 25 décembre</span>
+                            <span data-lang="en">30% off all hairstyles until December 25th</span>
+                        </p>
+                        <button class="text-purple-600 hover:text-purple-700 text-sm" onclick="downloadImage('{% static 'flyer/2.png' %}', 'promotion-noel.jpg')">
+                            <span data-lang="fr">Télécharger</span>
+                            <span data-lang="en">Download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Winner Example -->
+            <div class="gallery-item" data-category="winners" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                    <img src="{% static 'images/avarta.png' %}" alt="Winner" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this.src, 'image')">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 dark:text-white">
+                            <span data-lang="fr">Gagnante du Mois</span>
+                            <span data-lang="en">Winner of the Month</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                            <span data-lang="fr">Félicitations à Marie pour son superbe look!</span>
+                            <span data-lang="en">Congratulations to Marie for her amazing look!</span>
+                        </p>
+                        <button class="text-purple-600 hover:text-purple-700 text-sm" onclick="downloadImage('/api/placeholder/400/300', 'winner.jpg')">
+                            <span data-lang="fr">Télécharger</span>
+                            <span data-lang="en">Download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+          <!-- Video Example -->
+            <div class="gallery-item" data-category="videos" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                    <div class="w-full h-48 bg-gray-900 flex items-center justify-center">
+                        <video class="w-full h-48" controls>
+                            <source src="{% static 'videos/moi.mp4' %}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 dark:text-white">
+                            <span data-lang="fr">Tutoriel Coiffure</span>
+                            <span data-lang="en">Hairstyle Tutorial</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                            <span data-lang="fr">Comment réaliser des tresses parfaites</span>
+                            <span data-lang="en">How to make perfect braids</span>
+                        </p>
+                        <button class="text-purple-600 hover:text-purple-700 text-sm" onclick="downloadVideo('{% static 'videos/moi.mp4' %}', 'tutorial.mp4')">
+                            <span data-lang="fr">Télécharger</span>
+                            <span data-lang="en">Download</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Add more gallery items here -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mediaModal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+        <div class="modal-content max-w-4xl w-full mx-4 bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+            <div class="relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-xl z-10">&times;</button>
+                <div id="modalContent" class="w-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Language Toggle
+        const languageToggle = document.getElementById('language-toggle');
+        let currentLang = 'fr';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                if (element.dataset.lang === currentLang) {
+                    element.style.display = 'inline';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+
+        languageToggle.addEventListener('click', toggleLanguage);
+
+        // Initialize language display
+        document.querySelectorAll('[data-lang="en"]').forEach(element => {
+            element.style.display = 'none';
+        });
+
+        // Category Filtering
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal Functions
+        function openModal(src, type) {
+            const modal = document.getElementById('mediaModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            if (type === 'image') {
+                modalContent.innerHTML = `<img src="${src}" class="w-full h-auto" alt="Media">`;
+            } else if (type === 'video') {
+                modalContent.innerHTML = `
+                    <video controls class="w-full h-auto">
+                        <source src="${src}" type="video/mp4">
+                        Your browser does not support the video tag.
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('mediaModal');
+            modal.classList.add('hidden');
+        }
+
+        // Download Functions
+        function downloadImage(url, filename) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = filename;
+                    link.click();
+                    window.URL.revokeObjectURL(link.href);
+                })
+                .catch(console.error);
+        }
+
+        function downloadVideo(url, filename) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = filename;
+                    link.click();
+                    window.URL.revokeObjectURL(link.href);
+                })
+                .catch(console.error);
+        }
+
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true
+            });
+        });
+    </script>
+
+    <!-- Flowbite JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+</body>
+</html>

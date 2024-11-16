@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andra la Kamerounianse - Réservation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <style>
+        .form-container {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            transform: scale(1.01);
+        }
+    </style>
+</head>
+<body class="dark:bg-gray-900 min-h-screen">
+    <!-- Language and Theme Toggles -->
+    <div class="fixed top-4 right-4 flex space-x-4">
+        <button id="language-toggle" class="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700">
+            <span data-lang="fr">EN</span>
+            <span data-lang="en">FR</span>
+        </button>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-3xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12" data-aos="fade-down">
+                <h1 class="text-4xl font-bold mb-4 text-purple-600 dark:text-purple-400">
+                    <span data-lang="fr">Andra la Kamerounianse</span>
+                    <span data-lang="en">Andra the Cameroonian</span>
+                </h1>
+                <p class="text-xl text-gray-600 dark:text-gray-300">
+                    <span data-lang="fr">Formulaire de Réservation</span>
+                    <span data-lang="en">Booking Form</span>
+                </p>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="form-container bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8" data-aos="fade-up">
+                <form id="bookingForm" class="space-y-6">
+                    <!-- Name Fields -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                                <span data-lang="fr">Nom</span>
+                                <span data-lang="en">Surname</span>
+                            </label>
+                            <input type="text" name="surname" required
+                                class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                                <span data-lang="fr">Prénom</span>
+                                <span data-lang="en">Name</span>
+                            </label>
+                            <input type="text" name="name" required
+                                class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+
+                    <!-- Location Fields -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                                <span data-lang="fr">Quartier</span>
+                                <span data-lang="en">Quarter</span>
+                            </label>
+                            <input type="text" name="quarter" required
+                                class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                                <span data-lang="fr">Ville</span>
+                                <span data-lang="en">City</span>
+                            </label>
+                            <input type="text" name="city" required
+                                class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+
+                    <!-- Service Location -->
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                            <span data-lang="fr">Lieu du Service</span>
+                            <span data-lang="en">Service Location</span>
+                        </label>
+                        <select name="serviceLocation" required
+                            class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <option value="salon">
+                                <span data-lang="fr">Au salon (Yaoundé Mvog Ada)</span>
+                                <span data-lang="en">At salon (Yaoundé Mvog Ada)</span>
+                            </option>
+                            <option value="domicile">
+                                <span data-lang="fr">À domicile (+1500 FCFA)</span>
+                                <span data-lang="en">At home (+1500 FCFA)</span>
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Date and Time -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                                <span data-lang="fr">Date</span>
+                                <span data-lang="en">Date</span>
+                            </label>
+                            <input type="date" name="date" required
+                                class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                                <span data-lang="fr">Heure</span>
+                                <span data-lang="en">Time</span>
+                            </label>
+                            <select name="time" required
+                                class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Services -->
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">
+                            <span data-lang="fr">Service Souhaité</span>
+                            <span data-lang="en">Desired Service</span>
+                        </label>
+                        <select name="service" required
+                            class="input-field w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <option value="tresses">Tresses / Braids</option>
+                            <option value="locks">Locks</option>
+                            <option value="tissage">Tissage / Weaving</option>
+                            <option value="coiffure">Coiffure Naturelle / Natural Hairstyle</option>
+                            <option value="perruque">Pose Perruque / Wig Installation</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transform hover:scale-105 transition-all">
+                        <span data-lang="fr">Confirmer la Réservation</span>
+                        <span data-lang="en">Confirm Booking</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Language Toggle
+        const languageToggle = document.getElementById('language-toggle');
+        let currentLang = 'fr';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                if (element.dataset.lang === currentLang) {
+                    element.style.display = 'inline';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+
+        languageToggle.addEventListener('click', toggleLanguage);
+
+        // Initialize language display
+        document.querySelectorAll('[data-lang="en"]').forEach(element => {
+            element.style.display = 'none';
+        });
+
+        // Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const bookingData = Object.fromEntries(formData.entries());
+            
+            // Calculate transport fee if needed
+            const transportFee = bookingData.serviceLocation === 'domicile' ? '1500 FCFA' : '0 FCFA';
+            
+            // Create WhatsApp message
+            const message = encodeURIComponent(
+                `Bonjour, je souhaite réserver:\n\n` +
+                `Nom: ${bookingData.surname} ${bookingData.name}\n` +
+                `Location: ${bookingData.quarter}, ${bookingData.city}\n` +
+                `Service: ${bookingData.service}\n` +
+                `Date: ${bookingData.date}\n` +
+                `Heure: ${bookingData.time}\n` +
+                `Lieu: ${bookingData.serviceLocation === 'salon' ? 'Au salon' : 'À domicile'}\n` +
+                `Frais de transport: ${transportFee}`
+            );
+
+            // Redirect to WhatsApp
+            window.location.href = `https://wa.me/237655994500?text=${message}`;
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andra la Kamerounaise Hair Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/22.4.9/i18next.min.js"></script>
+    <style>
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header-animate {
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #4B5563;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .dark .nav-link {
+            color: #E5E7EB;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle-icon {
+            transition: transform 0.5s ease;
+        }
+
+        .dark .theme-toggle-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-all duration-500">
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white dark:bg-gray-900 shadow-md header-animate">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center transform hover:scale-105 transition-transform duration-300">
+                    <img src="{% static 'logo/logo.jpg' %}" alt="Swolgang Logo" class="h-12 w-12 rounded-full">
+                    <span class="ml-2 text-xl font-bold text-gray-800 dark:text-white">Andra la Kamerounaise</span>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" id="mobile-menu-button">
+                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'home' %}" class="nav-link active" data-i18n="nav.home">Home</a>
+                    <a href="{% url 'services' %}" class="nav-link" data-i18n="nav.services">Services</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="languageToggle" class="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300">
+                        <span class="language-text">EN/FR</span>
+                    </button>
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                        <svg class="w-6 h-6 theme-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path class="sun-moon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="{% url 'home' %}" class="nav-link active" data-i18n="nav.home">Home</a>
+                    <a href="{% url 'services' %}" class="nav-link" data-i18n="nav.services">Services</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Block -->
+    <main class="pt-20 min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+  <!-- Footer -->
+<footer class="bg-gray-100 dark:bg-gray-800 py-8 mt-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Online Booking Section -->
+            <div class="flex-1">
+                <div class="bg-purple-50 dark:bg-gray-800 rounded-xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                        Réservation en Ligne
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <svg aria-hidden="true" class="w-5 h-5 text-purple-600 shrink-0 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Choisissez votre date et heure</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg aria-hidden="true" class="w-5 h-5 text-purple-600 shrink-0 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Recevez des rappels automatiques</span>
+                        </li>
+                    </ul>
+                    <a href="{% url 'booking' %}" class="mt-6 w-full bg-purple-600 text-white py-3 px-6 rounded-full hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 text-center block">
+                        Réserver Maintenant
+                    </a>
+                    
+                </div>
+            </div>
+
+            <!-- Offline Booking Section -->
+            <div class="flex-1">
+                <div class="bg-pink-50 dark:bg-gray-800 rounded-xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                        Réservation par Téléphone
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg aria-hidden="true" class="w-5 h-5 text-pink-600 shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <div class="text-gray-600 dark:text-gray-300">
+                                <p>Tel : 237 655 99 45 00</p>
+                                <p>Mobile Mvog Ada, Yaoundé</p>
+                                <p>Email : alexandraebogo@icloud.com</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <svg aria-hidden="true" class="w-5 h-5 text-pink-600 shrink-0 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Visitez notre salon</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 text-center text-gray-600 dark:text-gray-300">
+                        <p class="font-medium">Horaires d'ouverture:</p>
+                        <p>Lun-Sam: 9h-19h</p>
+                        <p>Dimanche : 10h00 - 18h00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="flex-1">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white" data-i18n="footer.social">
+                        Suivez-nous
+                    </h2>
+                    <div class="flex space-x-6">
+                        <a href="#" class="group" aria-label="Visitez notre page Facebook">
+                            <svg class="h-8 w-8 text-gray-600 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="group" aria-label="Suivez-nous sur Instagram">
+                            <svg class="h-8 w-8 text-gray-600 group-hover:text-pink-600 dark:text-gray-400 dark:group-hover:text-pink-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Theme Toggle with Auto-switch
+        const themeToggle = document.getElementById('themeToggle');
+        let autoThemeSwitch = false;
+        let themeInterval;
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', 
+                document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+            );
+        }
+
+        function startAutoThemeSwitch() {
+            if (!themeInterval) {
+                themeInterval = setInterval(toggleTheme, 5000); // Switch every 5 seconds
+            }
+        }
+
+        function stopAutoThemeSwitch() {
+            if (themeInterval) {
+                clearInterval(themeInterval);
+                themeInterval = null;
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (!autoThemeSwitch) {
+                startAutoThemeSwitch();
+                autoThemeSwitch = true;
+            } else {
+                stopAutoThemeSwitch();
+                autoThemeSwitch = false;
+                toggleTheme();
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Enhanced Language Toggle and Translations
+        const translations = {
+            en: {
+                nav: {
+                    home: 'Home',
+                    services: 'Services',
+                    about: 'About Us',
+                    book: 'Book Now'
+                },
+                footer: {
+                    contact: 'Contact Us',
+                    hours: 'Opening Hours',
+                    social: 'Follow Us'
+                }
+            },
+            fr: {
+                nav: {
+                    home: 'Accueil',
+                    services: 'Services',
+                    about: 'À Propos',
+                    book: 'Réserver'
+                },
+                footer: {
+                    contact: 'Contactez-nous',
+                    hours: 'Heures d\'ouverture',
+                    social: 'Suivez-nous'
+                }
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'en';
+        const languageToggle = document.getElementById('languageToggle');
+        
+        function updateContent(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const keys = element.dataset.i18n.split('.');
+                let value = translations[lang];
+                keys.forEach(key => {
+                    value = value[key];
+                });
+                element.textContent = value;
+            });
+            localStorage.setItem('language', lang);
+        }
+
+        languageToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            languageToggle.querySelector('.language-text').textContent = currentLang.toUpperCase();
+            updateContent(currentLang);
+        });
+
+        // Initialize theme from localStorage
+        if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+
+       // Initialize content with default language
+       updateContent(currentLang);
+    </script>
+</body>
+</html>
