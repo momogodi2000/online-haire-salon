@@ -82,18 +82,56 @@
 <!-- Instagram Feed with Cultural Content -->
 <section class="py-16">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-white">
-            Notre Galerie d'Inspiration
-        </h2>
-        <p class="text-center mb-12 text-gray-600 dark:text-gray-300">
-            Découvrez nos créations et laissez-vous inspirer par la richesse des coiffures africaines
-        </p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <img src="{% static 'images/33.JPEG' %}" alt="Box Braids" class="w-full h-64 object-cover rounded-lg">
-            <img src="{% static 'images/44.JPEG' %}" alt="Fulani Braids" class="w-full h-64 object-cover rounded-lg">
-            <img src="{% static 'images/8.JPEG' %}" alt="Twist Braids" class="w-full h-64 object-cover rounded-lg">
-            <img src="{% static 'images/9.JPEG' %}" alt="Cornrows" class="w-full h-64 object-cover rounded-lg">
+        <!-- Header Section -->
+        <div class="text-center mb-12 transform hover:scale-105 transition duration-300">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800 dark:text-white">
+                Notre Galerie d'Inspiration
+            </h2>
+            <p class="text-center mb-12 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Découvrez nos créations et laissez-vous inspirer par la richesse des coiffures africaines
+            </p>
         </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <!-- Image 1 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <img src="{% static 'images/33.JPEG' %}" alt="Box Braids" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 
+                    transition duration-300 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Box Braids</p>
+                </div>
+            </div>
+            <!-- Image 2 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <img src="{% static 'images/44.JPEG' %}" alt="Fulani Braids" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 
+                    transition duration-300 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Fulani Braids</p>
+                </div>
+            </div>
+            <!-- Image 3 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <img src="{% static 'images/8.JPEG' %}" alt="Twist Braids" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 
+                    transition duration-300 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Twist Braids</p>
+                </div>
+            </div>
+            <!-- Image 4 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <img src="{% static 'images/9.JPEG' %}" alt="Cornrows" 
+                    class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 
+                    transition duration-300 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Cornrows</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -111,8 +149,8 @@
                 <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-amber-200 flex items-center justify-center">
                     <span class="text-2xl">🥉</span>
                 </div>
-                <h3 class="text-xl font-bold text-center mb-4">Bronze</h3>
-                <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                <h3 class="text-xl font-bold text-center mb-4 text-white">Bronze</h3>
+                     <ul class="space-y-2 text-gray-600 dark:text-gray-300">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -133,7 +171,7 @@
                 <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-200 flex items-center justify-center">
                     <span class="text-2xl">🥈</span>
                 </div>
-                <h3 class="text-xl font-bold text-center mb-4">Argent</h3>
+                <h3 class="text-xl font-bold text-center mb-4 text-white">Argent</h3>
                 <ul class="space-y-2 text-gray-600 dark:text-gray-300">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,7 +193,7 @@
                 <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-yellow-200 flex items-center justify-center">
                     <span class="text-2xl">🥇</span>
                 </div>
-                <h3 class="text-xl font-bold text-center mb-4">Or</h3>
+                <h3 class="text-xl font-bold text-center mb-4 text-white">Or</h3>
                 <ul class="space-y-2 text-gray-600 dark:text-gray-300">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
