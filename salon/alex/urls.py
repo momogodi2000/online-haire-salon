@@ -1,6 +1,12 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from django_distill import distill_path
+
+
+def get_index():
+    return None
+
 
 
 
@@ -10,6 +16,10 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('booking/', views.booking, name='booking'),
     path('flyer/', views.flyer, name='flyer'),
+
+
+    distill_path('', views.index, name='index', distill_func=get_index),
+
 
 
 
