@@ -1,0 +1,730 @@
+<!--base_home.html-->
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andra la Kamerounaise Hair Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/22.4.9/i18next.min.js"></script>
+    <style>
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header-animate {
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #4B5563;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .dark .nav-link {
+            color: #E5E7EB;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle-icon {
+            transition: transform 0.5s ease;
+        }
+
+        .dark .theme-toggle-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-all duration-500">
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white dark:bg-gray-900 shadow-md header-animate">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center transform hover:scale-105 transition-transform duration-300">
+                    <img src="/static/logo/logo.jpg" alt="Swolgang Logo" class="h-12 w-12 rounded-full">
+                    <span class="ml-2 text-xl font-bold text-gray-800 dark:text-white">Andra la Kamerounaise</span>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" id="mobile-menu-button">
+                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="nav-link active" data-i18n="nav.home">Home</a>
+                    <a href="/services/" class="nav-link" data-i18n="nav.services">Services</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="languageToggle" class="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300">
+                        <span class="language-text">EN/FR</span>
+                    </button>
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                        <svg class="w-6 h-6 theme-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path class="sun-moon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="/" class="nav-link active" data-i18n="nav.home">Home</a>
+                    <a href="/services/" class="nav-link" data-i18n="nav.services">Services</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Block -->
+    <main class="pt-20 min-h-screen">
+        
+<!-- Hero Section with Slideshow -->
+<section class="relative h-[60vh] pt-24">
+    <!-- Slideshow Container -->
+    <div class="relative h-full w-full overflow-hidden">
+        <!-- Slide 1 -->
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 slide"
+            style="background-image: url('/static/images/1.JPEG')">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slide"
+            style="background-image: url('/static/images/knotless-braids.JPG')">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slide"
+            style="background-image: url('/static/images/7.JPEG')">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slide"
+            style="background-image: url('/static/images/ghana-braids.JPG')">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="container mx-auto px-4 relative z-10 h-full flex items-center">
+            <div class="text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in" data-i18n="about.title">
+                    À Propos d'Andra la Kamerounaise
+                </h1>
+                <p class="text-xl md:text-2xl max-w-2xl animate-slide-up" data-i18n="about.subtitle">
+                    Créer de la beauté à travers la coiffure traditionnelle africaine
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 indicator active"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 indicator"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 indicator"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 indicator"></button>
+        </div>
+    </div>
+</section>
+
+<!-- Section Notre Histoire -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 transform hover:scale-105 transition-transform duration-500">
+                <img src="/static/images/22.JPEG" alt="Fondatrice" class="rounded-lg shadow-2xl">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white" data-i18n="story.title">
+                    Notre Histoire
+                </h2>
+                <div class="space-y-4 text-gray-600 dark:text-gray-300">
+                    <p class="animate-fade-in" data-i18n="story.p1">
+                        Fondée par passion pour les tresses africaines authentiques, Andra la Kamerounaise est devenue une pierre angulaire de la beauté et de la tradition à Yaoundé. Notre parcours a commencé avec une mission simple : fournir des services de tressage exceptionnels tout en célébrant le riche patrimoine de la culture capillaire africaine.
+                    </p>
+                    <p class="animate-fade-in" data-i18n="story.p2">
+                        Je suis une professionnelle spécialisée dans la réalisation de tresses africaines, mettant en valeur la beauté et l'identité unique qui sommeille en vous. Mon objectif est de sublimer votre coiffure avec des tresses authentiques et de qualité.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Services -->
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-i18n="services.title">
+            Nos Services
+        </h2>
+        
+        <!-- Grille des Services -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Carte de Service 1 -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                <div class="relative">
+                    <img src="/static/images/7.JPEG" alt="Tresses en Boîte" class="w-full h-64 object-cover">
+                    <div class="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full">
+                        À partir de 5 000 FCFA
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Tresses en Boîte</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Tresses en boîte classiques de différentes tailles, parfaites pour toute occasion. Durée : 4-6 heures
+                    </p>
+                    <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Options de taille multiples
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Longueur personnalisée disponible
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Comprend des conseils de soins capillaires
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='/booking/';" class="w-full bg-purple-600 text-white py-3 rounded-md hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105" data-i18n="services.book">
+                        Réservez maintenant
+                    </button>
+                    
+                </div>
+            </div>
+
+            <!-- Carte de Service 2 -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                <div class="relative">
+                    <img src="/static/images/44.JPEG" alt="Tresses Twist" class="w-full h-64 object-cover">
+                    <div class="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full">
+                        À partir de 5 000 FCFA
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Tresses Twist</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Magnifiques tresses twist pour un look naturel et élégant. Durée : 3-5 heures
+                    </p>
+                    <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Cheveux naturels ou synthétiques
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Divers styles disponibles
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Conseils d'entretien inclus
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='/booking/';" class="w-full bg-purple-600 text-white py-3 rounded-md hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105" data-i18n="services.book">
+                        Réservez maintenant
+                    </button>
+                    
+                </div>
+            </div>
+
+            <!-- Carte de Service 3 -->
+            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
+                <div class="relative">
+                    <img src="/static/images/8.JPEG" alt="Tresses Collées" class="w-full h-64 object-cover">
+                    <div class="absolute top-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full">
+                        À partir de 5 000 FCFA
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Tresses Collées</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Motifs de tresses collées classiques ou créatifs. Durée : 2-4 heures
+                    </p>
+                    <ul class="space-y-2 mb-6 text-gray-600 dark:text-gray-300">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Motifs personnalisés
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Avec ou sans extensions
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                            </svg>
+                            Traitement du cuir chevelu inclus
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='/booking/';" class="w-full bg-purple-600 text-white py-3 rounded-md hover:bg-purple-700 transition-colors duration-300 transform hover:scale-105" data-i18n="services.book">
+                        Réservez maintenant
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bouton Voir tout notre catalogue -->
+        <div class="mt-12 text-center">
+            <a href="/about/" class="inline-block bg-purple-600 text-white font-bold py-3 px-6 rounded hover:bg-purple-700 transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                Voir tout notre catalogue
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section Pourquoi Nous Choisir -->
+<section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-i18n="why.title">
+            Pourquoi Choisir Andra la K.
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Caractéristique 1 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.experience">Expérience</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.experienceText">
+                    Plus de 5 ans d'expérience professionnelle dans le tressage de cheveux africains
+                </p>
+            </div>
+
+            <!-- Caractéristique 2 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.quality">Qualité</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.qualityText">
+                    Produits capillaires premium et attention aux détails pour des résultats durables
+                </p>
+            </div>
+
+            <!-- Caractéristique 3 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.pricing">Tarifs Équitables</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.pricingText">
+                    Tarifs compétitifs avec une tarification transparente et sans frais cachés
+                </p>
+            </div>
+
+            <!-- Caractéristique 4 -->
+            <div class="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transform hover:-translate-y-2 transition-all duration-300">
+                <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" data-i18n="why.convenience">Commodité</h3>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="why.convenienceText">
+                    Horaires flexibles et environnement confortable dans le salon
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Témoignages -->
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white" data-i18n="testimonials.title">
+            Ce Que Disent Nos Clients
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Témoignage 1 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <img src="/static/images/avarta.png" alt="Client" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800 dark:text-white">Sarah K.</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="testimonials.review1">
+                    "Service absolument incroyable ! L'attention aux détails et le soin apporté à mes cheveux étaient exceptionnels. Mes tresses en boîte ont duré des mois !"
+                </p>
+            </div>
+
+            <!-- Témoignage 2 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <img src="/static/images/avarta3.png" alt="Client" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800 dark:text-white">Marlyse K.</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="testimonials.review2">
+                    "Service professionnel et attention incroyable aux détails. Mes tresses collées étaient exactement ce que je voulais !"                </p>
+            </div>
+
+            <!-- Témoignage 3 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <img src="/static/images/avarta3.png" alt="Client" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h4 class="font-bold text-gray-800 dark:text-white">Sandra K.</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300" data-i18n="testimonials.review3">
+                    "Meilleur salon de tresses à Yaoundé ! L'atmosphère est accueillante et les résultats sont toujours parfaits."                </p>
+            </div>
+        </div>
+    </div>
+</section>
+            <!-- Continue from here... -->
+
+
+<style>
+ .slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+</style>
+            
+ <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const slides = document.querySelectorAll('.slide');
+                    const indicators = document.querySelectorAll('.indicator');
+                    let currentSlide = 0;
+            
+                    function showSlide(index) {
+                        slides.forEach((slide, i) => {
+                            slide.classList.toggle('opacity-0', i !== index);
+                            slide.classList.toggle('opacity-100', i === index);
+                        });
+            
+                        indicators.forEach((indicator, i) => {
+                            indicator.classList.toggle('opacity-50', i !== index);
+                            indicator.classList.toggle('opacity-100', i === index);
+                        });
+                    }
+            
+                    function nextSlide() {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        showSlide(currentSlide);
+                    }
+            
+                    // Add click events to indicators
+                    indicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => {
+                            currentSlide = index;
+                            showSlide(currentSlide);
+                        });
+                    });
+            
+                    // Start automatic slideshow
+                    setInterval(nextSlide, 10000); // Change slide every 10 seconds
+                });
+</script>
+            
+    </main>
+
+  <!-- Footer -->
+<footer class="bg-gray-100 dark:bg-gray-800 py-8 mt-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Online Booking Section -->
+            <div class="flex-1">
+                <div class="bg-purple-50 dark:bg-gray-800 rounded-xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                        Réservation en Ligne
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <svg aria-hidden="true" class="w-5 h-5 text-purple-600 shrink-0 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Choisissez votre date et heure</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg aria-hidden="true" class="w-5 h-5 text-purple-600 shrink-0 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Recevez des rappels automatiques</span>
+                        </li>
+                    </ul>
+                    <a href="/booking/" class="mt-6 w-full bg-purple-600 text-white py-3 px-6 rounded-full hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300 text-center block">
+                        Réserver Maintenant
+                    </a>
+                    
+                </div>
+            </div>
+
+            <!-- Offline Booking Section -->
+            <div class="flex-1">
+                <div class="bg-pink-50 dark:bg-gray-800 rounded-xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                        Réservation par Téléphone
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg aria-hidden="true" class="w-5 h-5 text-pink-600 shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <div class="text-gray-600 dark:text-gray-300">
+                                <p>Tel : 237 655 99 45 00</p>
+                                <p>Mobile Mvog Ada, Yaoundé</p>
+                                <p>Email : alexandraebogo@icloud.com</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <svg aria-hidden="true" class="w-5 h-5 text-pink-600 shrink-0 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Visitez notre enplacement</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 text-center text-gray-600 dark:text-gray-300">
+                        <p class="font-medium">Horaires d'ouverture:</p>
+                        <p>Lun-Sam: 9h-19h</p>
+                        <p>Dimanche : 10h00 - 18h00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="flex-1">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 h-full shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white" data-i18n="footer.social">
+                        Suivez-nous
+                    </h2>
+                    <div class="flex space-x-6">
+                        <a href="#" class="group" aria-label="Visitez notre page Facebook">
+                            <svg class="h-8 w-8 text-gray-600 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="group" aria-label="Suivez-nous sur Instagram">
+                            <svg class="h-8 w-8 text-gray-600 group-hover:text-pink-600 dark:text-gray-400 dark:group-hover:text-pink-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Theme Toggle with Auto-switch
+        const themeToggle = document.getElementById('themeToggle');
+        let autoThemeSwitch = false;
+        let themeInterval;
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', 
+                document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+            );
+        }
+
+        function startAutoThemeSwitch() {
+            if (!themeInterval) {
+                themeInterval = setInterval(toggleTheme, 5000); // Switch every 5 seconds
+            }
+        }
+
+        function stopAutoThemeSwitch() {
+            if (themeInterval) {
+                clearInterval(themeInterval);
+                themeInterval = null;
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (!autoThemeSwitch) {
+                startAutoThemeSwitch();
+                autoThemeSwitch = true;
+            } else {
+                stopAutoThemeSwitch();
+                autoThemeSwitch = false;
+                toggleTheme();
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Enhanced Language Toggle and Translations
+        const translations = {
+            en: {
+                nav: {
+                    home: 'Home',
+                    services: 'Services',
+                    about: 'About Us',
+                    book: 'Book Now'
+                },
+                footer: {
+                    contact: 'Contact Us',
+                    hours: 'Opening Hours',
+                    social: 'Follow Us'
+                }
+            },
+            fr: {
+                nav: {
+                    home: 'Accueil',
+                    services: 'Services',
+                    about: 'À Propos',
+                    book: 'Réserver'
+                },
+                footer: {
+                    contact: 'Contactez-nous',
+                    hours: 'Heures d\'ouverture',
+                    social: 'Suivez-nous'
+                }
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'en';
+        const languageToggle = document.getElementById('languageToggle');
+        
+        function updateContent(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const keys = element.dataset.i18n.split('.');
+                let value = translations[lang];
+                keys.forEach(key => {
+                    value = value[key];
+                });
+                element.textContent = value;
+            });
+            localStorage.setItem('language', lang);
+        }
+
+        languageToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            languageToggle.querySelector('.language-text').textContent = currentLang.toUpperCase();
+            updateContent(currentLang);
+        });
+
+        // Initialize theme from localStorage
+        if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+
+       // Initialize content with default language
+       updateContent(currentLang);
+    </script>
+</body>
+</html>
